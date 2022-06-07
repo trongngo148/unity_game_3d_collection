@@ -6,9 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public float speedRotation;
+    private Animator animator;
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -28,9 +29,14 @@ public class PlayerMovement : MonoBehaviour
         
         if (movementDirection != Vector3.zero)
         {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            animator.SetBool("IsMoving", true);
 
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speedRotation * Time.deltaTime);
+        } else
+        {
+
+            animator.SetBool("IsMoving", false);
         }
     }
 }
