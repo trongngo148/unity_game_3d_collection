@@ -1301,7 +1301,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 24c38cec11926ac40b14c496f2c67679, type: 2}
+      objectReference: {fileID: 9100000, guid: 06d8be06423bdaf41bc4445916d3ff29, type: 2}
     - target: {fileID: -6057140222963153312, guid: 85f8daf173dfa4e44af9e322db081060,
         type: 3}
       propertyPath: m_Avatar
@@ -1315,7 +1315,7 @@ PrefabInstance:
     - target: {fileID: -6057140222963153312, guid: 85f8daf173dfa4e44af9e322db081060,
         type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 85f8daf173dfa4e44af9e322db081060,
         type: 3}
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d27d002b0ccbe44ab426e5bfb6c45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  maximunSpeed: 4
   speedRotation: 720
 --- !u!136 &1886041566
 CapsuleCollider:

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
+    public float maximunSpeed;
     public float speedRotation;
     private Animator animator;
     void Start()
@@ -19,14 +19,20 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
+
+        if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
+        {
+            inputMagnitude /= 2;
+        }
+
+        animator.SetFloat("Input Magnitude", inputMagnitude, 0.05f, Time.deltaTime);
+        float speed = inputMagnitude * maximunSpeed;
         movementDirection.Normalize();
 
 
-        if (horizontalInput > 0.2 || horizontalInput < -0.2 || verticalInput > 0.2 || verticalInput < -0.2)
-        {
-            transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
-        }
-        
+        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+
         if (movementDirection != Vector3.zero)
         {
             animator.SetBool("IsMoving", true);
